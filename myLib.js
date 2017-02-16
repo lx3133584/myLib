@@ -78,6 +78,38 @@ window.$ = (function() {
         })
         return this;
     }
+    //删除class的方法
+    Lib.prototype.removeClass = function(myClass) {
+        this.map(function(e) {
+            if (myClass) {
+                var myNewClass;
+                var oldClass = e.getAttribute("class").split(" ");
+                var removeClass = myClass.split(" ");
+                var newList = [];
+                var json = {};
+                for (var j = 0; j < removeClass.length; j++) {
+                    json[removeClass[j]] = 1;
+                }
+                for (var i = 0; i < oldClass.length; i++) {
+                    if (!json[oldClass[i]]) {
+                        newList.push(oldClass[i]);
+                    }
+                }
+                myNewClass = newList.join(" ");
+                if (myNewClass === "") {
+                    e.removeAttribute("class");
+                }
+                else {
+                    e.setAttribute("class",myNewClass);
+                }   
+            }
+            else {
+                e.removeAttribute("class")
+            }
+            
+        })
+        return this;
+    }
 
     return dom;
 })();
