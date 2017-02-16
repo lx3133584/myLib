@@ -13,8 +13,13 @@
     <!--<script src="jquery.js"></script>-->
     <script>
         //console.log($(".test").eq(0).text());
-        $(".test").eq(1).removeClass("test test1 test").text("123");
-        console.log($);
+        $(document).on("click",function(){
+            console.log("body");
+        },false)
+        $(".test").removeClass("test test1 test").on("click",function(){
+            console.log($(this));
+            console.log($(this).text());
+        },false);  
     </script>
 
 </body>

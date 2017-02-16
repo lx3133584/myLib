@@ -110,6 +110,20 @@ window.$ = (function() {
         })
         return this;
     }
+    //绑定事件的方法
+    Lib.prototype.on = function (type, fn, boolean) {
+        this.map(function(e) {
+            e.addEventListener(type, fn, boolean)
+        })
+        return this;
+    }
+    //解除绑定事件的方法
+    Lib.prototype.off = function (type, fn, boolean) {
+        this.map(function(e) {
+            e.removeEventListener(type, fn, boolean)
+        })
+        return this;
+    }
 
     return dom;
 })();
